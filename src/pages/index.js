@@ -23,12 +23,17 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ posts }) {
+  console.log(posts);
   return (
     <Layout pageTitle="Home">
       <Link href="/about">About</Link>
       <ul>
-        {posts.map(({ title }) => {
-          return <li>{title}</li>;
+        {posts.map(({ title, url }) => {
+          return (
+            <li>
+              <Link href={`posts/${url}`}>{title}</Link>
+            </li>
+          );
         })}
       </ul>
     </Layout>
